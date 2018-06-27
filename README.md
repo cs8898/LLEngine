@@ -75,7 +75,7 @@ public class SimpleGameSkeleton implements IGame {
 
 
 Script Syntax  
-------  
+-------------  
 
 Examples can be found in `src/main/resources/assets`  
 
@@ -90,6 +90,33 @@ And Here is some variable <<$var>>
 ```
 [Some Special Text]
 [This does also work with <<$var>>]
+```
+
+* Choice  
+```
+[[i wanna do this|dothis]] | [[Or i wanna do that|dothat]] | [[do some other|doother]]
+```
+
+
+* MARK  
+```
+:: This Is Some Mark
+:: also_this_is_one
+```
+
+
+* Jump  
+```
+[[This Is Some Mark]]
+[[also_this_is_one]]
+```
+
+
+* Delay  
+```
+[[delay 10m|Go To Some Mark]]
+[[delay 1h|InOneHoure]]
+[[delay 5s|InFiveSec]]
 ```
 
 
