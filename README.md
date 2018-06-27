@@ -8,7 +8,7 @@ Useage
 ------
 
 Parse ans Launch a ConsoleGame  
-```
+```java
 Parser parser = new Parser(path);
 parser.parse();
 
@@ -19,7 +19,7 @@ game.play();
 ```
 
 Implement the IGame inteface to create your own GameLogic  
-```
+```java
 public class SimpleGameSkeleton implements IGame {
     private Story story;
     private HashMap<String, String> variables;
