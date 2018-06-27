@@ -1,0 +1,76 @@
+:: Start
+Ready to GO!
+<<set $ver = "0.0.2">>
+[Parsing Test by Christian Schmied<cs8898@gmx.de> <<$ver>>]
+[This Tests]
+3 Different incomplete choices
+some delays
+setting and getting variables
+
+[[launch_test]]
+
+:: launch_test
+Some Choice Test First
+[[go on in 1m|delay_test1]]>> | <<choice [[go on in 5m|delay_test5]] | [[take the 10s else test|if_delay_test]]
+
+:: delay_test1
+<<set $iftest = 1>>
+[[if_delay_test]]
+
+:: delay_test5
+<<set $iftest = 5>>
+[[if_delay_test]]
+
+:: if_delay_test
+<<if $iftest is 1>>[[delay 1m|finish_test]]
+<<elseif $iftest is 5>>[[delay 5m|finish_test]]<<else>>[[delay 10s|finish_test]]
+<<endif>>
+
+:: finish_test
+The Simple IF-ELSEIF-ELSE test is done now
+[[if_adv_init]]
+
+:: if_adv_init
+<<set $advTest = 1>>
+<<if $advTest eq 1>>
+<<set $advSTest = 2>>
+<<else>>
+<<set $advSTest = 1>>
+<<endif>>
+[[if_adv_test]]
+
+:: if_adv_test
+Nun zur Advanced Auswertung:
+<<if $advTest is 0 and $advSTest is 0>>
+Both where 0
+[[Restart|Start]] | [[I'm Done|Finish]]
+<<elseif $advTest is 1 and $advSTest is 2>>
+Both where set correctly
+advTest = <<$advTest>>
+advSTest = <<$advSTest>>
+[[Finish]]
+<<elseif $advTest is 1 or $advSTest is 2>>
+One of them was correct
+[[Restart|Start]] | [[I'm Done|Finish]]
+<<else>>
+None of them did match but where != 0
+[[Restart|Start]] | [[I'm Done|Finish]]
+<<endif>>
+
+:: Finish
+[Tests are done]
+<<if $advTest is 1 and $advSTest is 2>>
+The Variables are Still fine
+<<endif>>
+
+
+:: String Test
+<<set $foo = "bar">>
+[$foo set to "<<$foo>>"]
+<<if $foo is "bar">>
+[String is correct]
+<<elseif $foo eq "">>
+[String is empty]
+<<else>>
+[String is wrong]
+<<endif>>
